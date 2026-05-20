@@ -7,14 +7,11 @@ import mate.academy.service.MovieService;
 public class Main {
 
     public static void main(String[] args) {
-
-        MovieService movieService = (MovieService) Injector
-                .getInstance("mate.academy")
-                .getInstance(MovieService.class);
+        Injector injector = Injector.getInstance("mate.academy");
+        MovieService movieService = (MovieService) injector.getInstance(MovieService.class);
         Movie movie = new Movie();
-        movie.setDescription("second part of magic");
         movie.setTitle("Harry Potter 3");
+        movie.setDescription("second part of magic");
         movieService.add(movie);
-        System.out.println(movieService.get(1L).getTitle());
     }
 }
