@@ -28,7 +28,7 @@ public class MovieDaoImpl implements MovieDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new DataProcessingException("Cant insert movie to DB");
+            throw new DataProcessingException("Cant insert movie to DB ", e);
         } finally {
             if (session != null) {
                 session.close();
@@ -44,7 +44,7 @@ public class MovieDaoImpl implements MovieDao {
 
         } catch (Exception e) {
             throw new DataProcessingException(
-                    "Can't get movie by id: " + id);
+                    "Can't get movie by id: " + id, e);
 
         }
     }
